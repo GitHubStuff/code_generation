@@ -1,0 +1,12 @@
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    invalid_uri: error
+
+linter:
+  rules:
+    - camel_case_types

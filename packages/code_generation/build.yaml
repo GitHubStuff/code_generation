@@ -1,0 +1,39 @@
+targets:
+  $default:
+    builders:
+      asset_enum|localize_enum|localize_cubit|create_hive:
+        enabled: true
+
+builders:
+  asset_enum:
+    target: ":asset_enum"
+    import: "package:code_generation/builder.dart"
+    builder_factories: ["assetEnum"]
+    build_extensions: { ".dart": [".local.g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
+  create_hive:
+    target: ":create_hive"
+    import: "package:code_generation/builder.dart"
+    builder_factories: ["hiveJsonBuilder"]
+    build_extensions: {".dart": [".hive.g.dart"]}
+    auto_apply: dependents
+    applies_builders: ["source_gen|combining_builder"]
+    build_to: cache
+  localize_enum:
+    target: ":localize_enum"
+    import: "package:code_generation/builder.dart"
+    builder_factories: ["localizeEnum"]
+    build_extensions: { ".dart": [".enum.g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
+  localize_cubit:
+    target: ":localize_cubit"
+    import: "package:code_generation/builder.dart"
+    builder_factories: ["localizeCubit"]
+    build_extensions: { ".dart": [".cubit.g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
