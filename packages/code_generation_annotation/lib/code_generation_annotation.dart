@@ -17,19 +17,6 @@ class AssetsEnum {
   });
 }
 
-class LocalizeCubit {
-  final String prefix;
-  final String enumName;
-  const LocalizeCubit(this.prefix, this.enumName);
-}
-
-class LocalizeEnum {
-  final String i69nRoot;
-  final String helperClassName;
-  final bool generateHelperClass;
-  const LocalizeEnum({required this.i69nRoot, required this.helperClassName, this.generateHelperClass = false});
-}
-
 class HiveJsonSerialExtender {
   final String className;
   final String key;
@@ -39,4 +26,11 @@ class HiveJsonSerialExtender {
     required this.key,
     this.boxName = 'com.shared.hive.data.store',
   });
+}
+
+class LocalizationEnum {
+  final String i69nKey;
+  final String helperClassName;
+  final bool generateHelperClass;
+  const LocalizationEnum({required this.i69nKey, required this.helperClassName, this.generateHelperClass = false});
 }

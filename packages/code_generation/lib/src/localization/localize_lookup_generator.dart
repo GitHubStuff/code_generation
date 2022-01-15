@@ -20,7 +20,7 @@ class LocalizeLookupGenerator {
 
   LocalizeLookupGenerator(this.element, this.annotations) : assert(element.kind == ElementKind.ENUM);
 
-  String get i69nRoot => annotations.read('i69nRoot').stringValue;
+  String get i69nKey => annotations.read('i69nKey').stringValue;
   String get helperClassName => annotations.read('helperClassName').stringValue;
   bool get generateHelperClass => annotations.read('generateHelperClass').boolValue;
 
@@ -49,10 +49,10 @@ class LocalizeLookupGenerator {
     for (SupportedLanguages lng in SupportedLanguages.values) {
       _generated.writeln('      case \'${lng.name}\':');
       if (lng.name != 'en') {
-        _generated.writeln('        return _lookup(this, Local_${lng.name}().$i69nRoot);');
+        _generated.writeln('        return _lookup(this, Local_${lng.name}().$i69nKey);');
       } else {
         _generated.writeln('      default:');
-        _generated.writeln('        return _lookup(this, Local().$i69nRoot);');
+        _generated.writeln('        return _lookup(this, Local().$i69nKey);');
       }
     }
     _generated.writeln('    }');
@@ -70,14 +70,14 @@ class LocalizeLookupGenerator {
   void _generateCase(FieldElement e) {
     var name = e.name;
     _generated.writeln('case ${element.name}.$name:');
-    _generated.writeln('  return $i69nRoot.$name;');
+    _generated.writeln('  return $i69nKey.$name;');
   }
 
   /// Top of the code
   void _generateExtensionHeader() {
-    _generated.writeln('//NOTE: ${element.name} look-up and translation for ${i69nRoot.capitalize()}');
+    _generated.writeln('//NOTE: ${element.name} look-up and translation for ${i69nKey.capitalize()}');
     _generated.writeln('extension ${element.name}Lookup on ${element.name}{');
-    _generated.writeln('  String _lookup(${element.name} key, ${i69nRoot.capitalize()}Local $i69nRoot) {');
+    _generated.writeln('  String _lookup(${element.name} key, ${i69nKey.capitalize()}Local $i69nKey) {');
     _generated.writeln('    switch (key) {');
   }
 

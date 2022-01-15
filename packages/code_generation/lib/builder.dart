@@ -4,7 +4,6 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'src/assets/asset_enum_generator.dart';
-import 'src/cubit/localize_cubit_generator.dart';
 import 'src/hive/hive_generator.dart';
 import 'src/localization/localize_enum_generator.dart';
 
@@ -16,10 +15,6 @@ Builder hiveJsonBuilder(BuilderOptions options) {
   return SharedPartBuilder([const HiveGenerator()], 'hive_json_generator');
 }
 
-Builder localizeEnum(BuilderOptions options) {
+Builder localizationEnum(BuilderOptions options) {
   return SharedPartBuilder([const LocalizeEnumGenerator()], 'localize_enum');
-}
-
-Builder localizeCubit(BuilderOptions options) {
-  return SharedPartBuilder([const LocalizeCubitGenerator()], 'localize_cubit');
 }

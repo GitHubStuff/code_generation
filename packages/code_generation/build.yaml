@@ -24,16 +24,8 @@ builders:
   localize_enum:
     target: ":localize_enum"
     import: "package:code_generation/builder.dart"
-    builder_factories: ["localizeEnum"]
+    builder_factories: ["localizationEnum"]
     build_extensions: { ".dart": [".enum.g.dart"] }
-    auto_apply: dependents
-    build_to: cache
-    applies_builders: [ "source_gen|combining_builder" ]
-  localize_cubit:
-    target: ":localize_cubit"
-    import: "package:code_generation/builder.dart"
-    builder_factories: ["localizeCubit"]
-    build_extensions: { ".dart": [".cubit.g.dart"] }
     auto_apply: dependents
     build_to: cache
     applies_builders: [ "source_gen|combining_builder" ]

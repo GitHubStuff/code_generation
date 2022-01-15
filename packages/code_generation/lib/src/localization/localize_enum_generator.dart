@@ -7,7 +7,7 @@ import 'package:source_gen/source_gen.dart';
 
 import 'localize_lookup_generator.dart';
 
-class LocalizeEnumGenerator extends GeneratorForAnnotation<LocalizeEnum> {
+class LocalizeEnumGenerator extends GeneratorForAnnotation<LocalizationEnum> {
   const LocalizeEnumGenerator();
 
   @override
