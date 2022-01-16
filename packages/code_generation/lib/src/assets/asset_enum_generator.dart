@@ -11,7 +11,7 @@ class AssetEnumGenerator extends GeneratorForAnnotation<AssetsEnum> {
   const AssetEnumGenerator();
 
   @override
-  FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) async {
     if (element.kind == ElementKind.ENUM && element is ClassElement) {
       return AssetExtensionGenerator(element, annotation).generate();
     } else {

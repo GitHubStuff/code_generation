@@ -7,5 +7,5 @@ extension StringExtensions on String {
 
   String get capitalize => "${this[0].toUpperCase()}${this.substring(1)}";
 
-  String get makePublic => this.substring(1);
+  String get makePublic => (this.substring(0,1) == '_') ? this.substring(1) : this;
 }

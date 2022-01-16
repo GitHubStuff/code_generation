@@ -5,11 +5,5 @@ class AutoSaveCodeGenerator {
   final ClassElement element;
   final ConstantReader annotations;
 
-  final _generated = StringBuffer();
-
   AutoSaveCodeGenerator(this.element, this.annotations);
-
-  String generate() {
-    return _generated.toString();
-  }
 }

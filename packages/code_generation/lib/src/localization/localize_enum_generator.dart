@@ -11,7 +11,7 @@ class LocalizeEnumGenerator extends GeneratorForAnnotation<LocalizationEnum> {
   const LocalizeEnumGenerator();
 
   @override
-  FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) async {
     if (element.kind == ElementKind.ENUM && element is ClassElement) {
       return LocalizeLookupGenerator(element, annotation).generate();
     } else {

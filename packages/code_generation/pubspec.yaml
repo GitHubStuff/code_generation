@@ -1,6 +1,6 @@
 name: code_generation
 description: Code generator for localize enum that makes the use of enums much better.
-version: 0.0.3+45
+version: 0.0.3+58
 publish_to: 'none'
 homepage: https://www.raehealth.com
 
