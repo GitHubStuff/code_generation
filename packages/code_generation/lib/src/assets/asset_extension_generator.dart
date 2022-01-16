@@ -130,12 +130,12 @@ class AssetExtensionGenerator {
   }
 
   void _assetImage(String dir, String name) {
-    final fullname = 'assets/$dir/${name.unCamelCase()}.$dir';
+    final fullname = 'assets/$dir/${name.unCamelCase}.$dir';
     _generated.writeln(" static AssetImage get $name => AssetImage('$fullname', package: '$packageName');");
   }
 
   void _json(String name) {
-    final fullname = 'assets/json/${name.unCamelCase()}.json';
+    final fullname = 'assets/json/${name.unCamelCase}.json';
     _generated.writeln("  static Future<String> get $name => rootBundle.loadString('$fullname');");
   }
 

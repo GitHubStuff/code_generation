@@ -4,8 +4,14 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'src/assets/asset_enum_generator.dart';
+import 'src/auto_save/auto_save_generator.dart';
 import 'src/hive/hive_generator.dart';
 import 'src/localization/localize_enum_generator.dart';
+
+
+Builder autoSave(BuilderOptions options) {
+  return SharedPartBuilder([const AutoSaveGenerator()], 'auto_save');
+}
 
 Builder assetEnum(BuilderOptions options) {
   return SharedPartBuilder([const AssetEnumGenerator()], 'asset_enum');

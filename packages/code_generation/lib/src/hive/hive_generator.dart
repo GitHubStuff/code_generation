@@ -12,7 +12,6 @@ class HiveGenerator extends GeneratorForAnnotation<HiveJsonSerialExtender> {
 
   @override
   FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
-
     if (element.kind == ElementKind.CLASS && element is ClassElement) {
       return HiveJsonGenerator(element, annotation).generate();
     } else {

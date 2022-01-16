@@ -2,6 +2,11 @@ library code_generation_annotation;
 
 export 'package:meta/meta.dart';
 
+class AutoSave {
+  final String setter;
+  const AutoSave([this.setter = '']);
+}
+
 class AssetsEnum {
   final String assetTitle;
   final String packageName;

@@ -75,9 +75,9 @@ class LocalizeLookupGenerator {
 
   /// Top of the code
   void _generateExtensionHeader() {
-    _generated.writeln('//NOTE: ${element.name} look-up and translation for ${i69nKey.capitalize()}');
+    _generated.writeln('//NOTE: ${element.name} look-up and translation for ${i69nKey.capitalize}');
     _generated.writeln('extension ${element.name}Lookup on ${element.name}{');
-    _generated.writeln('  String _lookup(${element.name} key, ${i69nKey.capitalize()}Local $i69nKey) {');
+    _generated.writeln('  String _lookup(${element.name} key, ${i69nKey.capitalize}Local $i69nKey) {');
     _generated.writeln('    switch (key) {');
   }
 

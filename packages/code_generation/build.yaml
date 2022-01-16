@@ -5,6 +5,14 @@ targets:
         enabled: true
 
 builders:
+  auto_save:
+    target: ":auto_save"
+    import: "package:code_generation/builder.dart"
+    builder_factories: ["autoSave"]
+    build_extensions: { ".dart": [".local.g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
   asset_enum:
     target: ":asset_enum"
     import: "package:code_generation/builder.dart"
