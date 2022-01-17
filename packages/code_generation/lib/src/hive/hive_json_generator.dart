@@ -9,14 +9,13 @@ class HiveJsonGenerator {
 
   HiveJsonGenerator(this.element, this.annotations) : assert(element.kind == ElementKind.CLASS);
 
-  String get className => annotations.read('className').stringValue;
-  String get key => annotations.read('key').stringValue;
+  String get className => annotations.peek('className') != null ? annotations.read('className').stringValue : throw Exception('Missing class name in @HiveJsonSerialExtender\n');
+  String get key => annotations.peek('key') != null ? annotations.read('key').stringValue : 'key$className';
   String get boxName => annotations.read('boxName').stringValue;
 
   String generate() {
-    //_generated.writeln('/*');
+    if (boxName.isEmpty) throw Exception('Hive requires an non-empty box name in @HiveJsonSerialExtender for $className\n');
     _body();
-    //_generated.writeln('*/');
     return _generated.toString();
   }
 
@@ -40,20 +39,17 @@ class HiveJsonGenerator {
     _generated.writeln('    }');
     _generated.writeln('  }');
     _generated.writeln('');
-    _generated.writeln('  void save() {');
-    _generated.writeln('    final String jsonString = jsonEncode(this);');
-    _generated.writeln('    _box?.put(_key, jsonString);');
-    _generated.writeln('  }');
+    _generated.writeln('  void save() => _box?.put(_key, jsonEncode(this));');
     _generated.writeln('');
-    _generated.writeln('  void close() {');
-    _generated.writeln('    _box?.close();');
-    _generated.writeln('  }');
+    _generated.writeln('  void close() => _box?.close();');
+    _generated.writeln('');
+    _generated.writeln('  void delete() => _box?.delete(_key);');
     _generated.writeln('');
     _generated.writeln('  static $className? reload() {');
     _generated.writeln('    String? storedValue = _box?.get(_key);');
     _generated.writeln('    if (storedValue == null) return null;');
     _generated.writeln('    Map<String, dynamic> map = jsonDecode(storedValue);');
-    _generated.writeln('    return MyObject.fromJson(map);');
+    _generated.writeln('    return $className.fromJson(map);');
     _generated.writeln('  }');
     _generated.writeln('');
     _generated.writeln('  static $className fromString(String string) => $className.fromJson(jsonDecode(string));');

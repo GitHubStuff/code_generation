@@ -4,7 +4,9 @@ export 'package:meta/meta.dart';
 
 class AutoSave {
   final String setter;
-  const AutoSave([this.setter = '']);
+  final bool generateGetter;
+  final String? getter;
+  const AutoSave({this.setter = '', this.generateGetter = false, this.getter});
 }
 
 class AssetsEnum {
