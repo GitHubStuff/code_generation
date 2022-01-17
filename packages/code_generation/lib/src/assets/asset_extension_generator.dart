@@ -18,12 +18,10 @@ class AssetExtensionGenerator {
   String get gradientClassAndMapName => annotations.read('gradientClassAndMapName').stringValue;
 
   String generate() {
-    _generated.writeln('/* name:[$name] assetTitle:[$assetTitle] */');
+    _generated.writeln('/* For "enum $name" the assetTitle => [$assetTitle] */');
     _generateAssets();
     return _generated.toString();
   }
-
-  //String get assetRoot => element.name.substring(0, element.name.length - 2);
 
   void _generateAssets() {
     _generated.writeln('class ${assetTitle} {');
@@ -78,16 +76,16 @@ class AssetExtensionGenerator {
       _generated.writeln('            children: [');
       _generated.writeln('              Container(');
       _generated.writeln('                height: size,');
-      _generated.writeln('                width: size / 2.0,');
+      _generated.writeln('                width: (size / 2.0) - 1.5,');
       _generated.writeln('                color: ${assetTitle}.${e.name}.dark,');
       _generated.writeln('              ),');
       _generated.writeln('              Container(');
       _generated.writeln('                height: size,');
-      _generated.writeln('                width: size / 2.0,');
+      _generated.writeln('                width: (size / 2.0) - 1.5,');
       _generated.writeln('                color: ${assetTitle}.${e.name}.light,');
       _generated.writeln('              ),');
       _generated.writeln('            ],');
-      _generated.writeln('          );');
+      _generated.writeln('          ).borderAll(Colors.deepPurpleAccent);');
     }
     if (e.name.startsWith('gradient')) {
       //_generated.writeln('');
@@ -97,14 +95,14 @@ class AssetExtensionGenerator {
       _generated.writeln('                height: size,');
       _generated.writeln('                width: size / 2.0,');
       _generated.writeln('                themeGradients: ${assetTitle}.${e.name},');
-      _generated.writeln('                circularBorderRadius: 5.0,');
+      _generated.writeln('                circularBorderRadius: 1.0,');
       _generated.writeln('                overridingBrightness: Brightness.dark,');
       _generated.writeln('              ),');
       _generated.writeln('              LinearGradientContainer(');
       _generated.writeln('                height: size,');
       _generated.writeln('                width: size / 2.0,');
       _generated.writeln('                themeGradients: ${assetTitle}.${e.name},');
-      _generated.writeln('                circularBorderRadius: 5.0,');
+      _generated.writeln('                circularBorderRadius: 1.0,');
       _generated.writeln('                overridingBrightness: Brightness.light,');
       _generated.writeln('              ),');
       _generated.writeln('            ],');
