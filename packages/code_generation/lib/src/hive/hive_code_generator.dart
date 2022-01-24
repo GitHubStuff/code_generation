@@ -14,6 +14,7 @@ class HiveCodeGenerator {
   String get enumName => annotations.peek('enumName') == null ? '' : annotations.read('enumName').stringValue;
 
   String generate() {
+    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
     _generateHive();
     return _generated.toString();
   }

@@ -18,6 +18,7 @@ class AssetExtensionGenerator {
   String get gradientClassAndMapName => annotations.read('gradientClassAndMapName').stringValue;
 
   String generate() {
+    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
     _generated.writeln('/* For "enum $name" the assetTitle => [$assetTitle] */');
     _generateAssets();
     return _generated.toString();
