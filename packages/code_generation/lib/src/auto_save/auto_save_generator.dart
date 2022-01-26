@@ -5,10 +5,9 @@ import 'package:source_gen/source_gen.dart';
 import '../../string_extension.dart';
 import '../generator_for_annotated_field_abstract.dart';
 
-bool _addIgnoreLines = true;
-
 class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
   const AutoSaveGenerator();
+  static bool _addIgnoreLines = true;
 
   /// Defined in GeneratorForAnnotatedFieldAbstract
   @override

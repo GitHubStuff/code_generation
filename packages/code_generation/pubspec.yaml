@@ -1,6 +1,6 @@
 name: code_generation
 description: Code generator for localize enum that makes the use of enums much better.
-version: 0.0.3+93
+version: 0.0.3+94
 publish_to: 'none'
 homepage: https://www.raehealth.com
 
@@ -13,8 +13,8 @@ dependencies:
   build:
   build_config:
   code_generation_annotation:
-    # path: ../code_generation_annotation
-    git:
-      url: https://github.com/RAE-Health/code_generation.git
-      path: packages/code_generation_annotation
+    path: ../code_generation_annotation
+    # git:
+    #   url: https://github.com/RAE-Health/code_generation.git
+    #   path: packages/code_generation_annotation
   source_gen:
