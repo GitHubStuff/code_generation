@@ -5,6 +5,8 @@ import 'package:source_gen/source_gen.dart';
 import '../../string_extension.dart';
 import '../generator_for_annotated_field_abstract.dart';
 
+bool _addIgnoreLines = true;
+
 class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
   const AutoSaveGenerator();
 
@@ -69,8 +71,10 @@ class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
     String dataType() => tokenItems[3];
     String variableName() => tokenItems[4];
     String getterCode = (getterName() == '*') ? '' : '${dataType()} get ${getterName()} => ${variableName()};';
+    String headerLine = (_addIgnoreLines) ? '// ignore_for_file: lines_longer_than_80_chars' : '';
+    _addIgnoreLines = false;
     String result = """
-// ignore_for_file: lines_longer_than_80_chars
+$headerLine
     extension ${className()}AutoSave${setterName().capitalize} on ${className()} {
       set ${setterName()}(${dataType()} newValue) {
         ${variableName()} = newValue;
