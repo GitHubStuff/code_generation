@@ -30,6 +30,7 @@ class HiveJsonGenerator {
     _generated.writeln('');
     _generated.writeln('  //! Should be called high in the widget tree {preferably in main()}');
     _generated.writeln('  static Future<void> setup() async {');
+    _generated.writeln('    if (setupComplete) return;');
     _generated.writeln('    try {');
     _generated.writeln('      await Hive.initFlutter();');
     _generated.writeln('      _box = await Hive.openBox<String>(_boxName);');
