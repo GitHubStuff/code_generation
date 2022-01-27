@@ -26,6 +26,7 @@ class HiveJsonGenerator {
     _generated.writeln("  static const _boxName = '$boxName';");
     _generated.writeln("  static const _key = '$keyName';");
     _generated.writeln('  static Box? _box;');
+    _generated.writeln('  static bool get setupComplete => (_box != null);');
     _generated.writeln('');
     _generated.writeln('  //! Should be called high in the widget tree {preferably in main()}');
     _generated.writeln('  static Future<void> setup() async {');

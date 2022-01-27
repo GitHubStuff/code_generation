@@ -1,6 +1,6 @@
 name: code_generation_annotation
 description: Annotations for the localize_enum code generator package.
-version: 0.0.3+95
+version: 0.0.3+96
 homepage: https://www.raehealth.com
 publish_to: 'none'
 
