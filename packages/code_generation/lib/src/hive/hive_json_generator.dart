@@ -40,13 +40,14 @@ class HiveJsonGenerator {
     _generated.writeln('    }');
     _generated.writeln('  }');
     _generated.writeln('');
-    _generated.writeln('  void save() => _box?.put(_key, jsonEncode(this));');
+    _generated.writeln('  void save() => (setupComplete) ? _box?.put(_key, jsonEncode(this)) : throw FlutterError("Not setup");');
     _generated.writeln('');
-    _generated.writeln('  void close() => _box?.close();');
+    _generated.writeln('  void close() => (setupComplete) ? _box?.close() : throw FlutterError("Not setup");');
     _generated.writeln('');
-    _generated.writeln('  void delete() => _box?.delete(_key);');
+    _generated.writeln('  void delete() => (setupComplete) ? _box?.delete(_key) : throw FlutterError("Not setup");');
     _generated.writeln('');
     _generated.writeln('  static $className? reload() {');
+    _generated.writeln('    if (!setupComplete) throw FlutterError("Not setup");');
     _generated.writeln('    String? storedValue = _box?.get(_key);');
     _generated.writeln('    if (storedValue == null) return null;');
     _generated.writeln('    Map<String, dynamic> map = jsonDecode(storedValue);');
