@@ -22,15 +22,15 @@ class HiveJsonGenerator {
   void _body() {
     String keyName = key.isNotEmpty ? key : 'key$className';
     _generated.writeln('// Extension on $className to persist using Hive');
-    _generated.writeln('extension ${className}Hive on $className {');
+    _generated.writeln('extension ${className}WithHive on $className {');
     _generated.writeln("  static const _boxName = '$boxName';");
     _generated.writeln("  static const _key = '$keyName';");
     _generated.writeln('  static Box? _box;');
-    _generated.writeln('  static bool get setupComplete => (_box != null);');
+    _generated.writeln('  static bool get _\$setupComplete => (_box != null);');
     _generated.writeln('');
     _generated.writeln('  //! Should be called high in the widget tree {preferably in main()}');
-    _generated.writeln('  static Future<void> setup() async {');
-    _generated.writeln('    if (setupComplete) return;');
+    _generated.writeln('  static Future<void> _\$setup() async {');
+    _generated.writeln('    if (_\$setupComplete) return;');
     _generated.writeln('    try {');
     _generated.writeln('      await Hive.initFlutter();');
     _generated.writeln('      _box = await Hive.openBox<String>(_boxName);');
@@ -41,21 +41,21 @@ class HiveJsonGenerator {
     _generated.writeln('    }');
     _generated.writeln('  }');
     _generated.writeln('');
-    _generated.writeln('  void save() => (setupComplete) ? _box?.put(_key, jsonEncode(this)) : throw FlutterError("Not setup");');
+    _generated.writeln('  void _\$save([String? key]) => (_\$setupComplete) ? _box?.put(key ?? _key, jsonEncode(this)) : throw FlutterError("Not setup");');
     _generated.writeln('');
-    _generated.writeln('  void close() => (setupComplete) ? _box?.close() : throw FlutterError("Not setup");');
+    _generated.writeln('  void _\$close() => (_\$setupComplete) ? _box?.close() : throw FlutterError("Not setup");');
     _generated.writeln('');
-    _generated.writeln('  void delete() => (setupComplete) ? _box?.delete(_key) : throw FlutterError("Not setup");');
+    _generated.writeln('  void _\$delete([String? key]) => (_\$setupComplete) ? _box?.delete(key ?? _key) : throw FlutterError("Not setup");');
     _generated.writeln('');
-    _generated.writeln('  static $className? reload() {');
-    _generated.writeln('    if (!setupComplete) throw FlutterError("Not setup");');
-    _generated.writeln('    String? storedValue = _box?.get(_key);');
+    _generated.writeln('  static $className? _\$reload([String? key]) {');
+    _generated.writeln('    if (!_\$setupComplete) throw FlutterError("Not setup");');
+    _generated.writeln('    String? storedValue = _box?.get(key ?? _key);');
     _generated.writeln('    if (storedValue == null) return null;');
     _generated.writeln('    Map<String, dynamic> map = jsonDecode(storedValue);');
     _generated.writeln('    return $className.fromJson(map);');
     _generated.writeln('  }');
     _generated.writeln('');
-    _generated.writeln('  static $className fromString(String string) => $className.fromJson(jsonDecode(string));');
+    _generated.writeln('  static $className _\$fromString(String string) => $className.fromJson(jsonDecode(string));');
     _generated.writeln('}');
   }
 }
