@@ -22,7 +22,7 @@ class HiveJsonGenerator {
   void _body() {
     String keyName = key.isNotEmpty ? key : 'key$className';
     _generated.writeln('// Extending features on $className to persist using Hive');
-    _generated.writeln('/* Cut/Paste for main file....');
+    _generated.writeln('/* NOTE: Cut/Paste for main file....');
     _generated.writeln('  static Future<void> setup() => _\$setup();');
     _generated.writeln('  static $className from({required String string}) => _\$fromString(string);');
     _generated.writeln('  static $className? reload([String? key]) => _\$reload(key);');
@@ -49,7 +49,7 @@ class HiveJsonGenerator {
     _generated.writeln('  }');
     _generated.writeln('}');
     _generated.writeln('');
-    _generated.writeln('void _\$save([String? key]) => (_\$setupComplete) ? _box?.put(key ?? _key, jsonEncode(this)) : throw FlutterError("Not setup");');
+    _generated.writeln('void _\$save(Map<String, dynamic> json, [String? key]) => (_\$setupComplete) ? _box?.put(key ?? _key, jsonEncode(json)) : throw FlutterError("Not setup");');
     _generated.writeln('');
     _generated.writeln('void _\$close() => (_\$setupComplete) ? _box?.close() : throw FlutterError("Not setup");');
     _generated.writeln('');

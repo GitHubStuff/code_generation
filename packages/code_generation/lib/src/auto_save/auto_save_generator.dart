@@ -75,7 +75,7 @@ class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
     _addIgnoreLines = false;
     String result = """
 $headerLine
-/* Cut and Paste to main file
+/* NOTE: Cut and Paste to main file
 $hintGetter
 set ${setterName()} => _\$${setterName()}
 */
