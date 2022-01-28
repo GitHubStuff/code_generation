@@ -77,7 +77,7 @@ class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
 $headerLine
 /* NOTE: Cut and Paste to main file
 $hintGetter
-set ${setterName()} => _\$${setterName()}
+set ${setterName()}(${dataType()} newValue) => _\$${setterName()} = newValue;
 */
     extension ${className()}AutoSave${setterName().capitalize} on ${className()} {
       set _\$${setterName()}(${dataType()} newValue) {
