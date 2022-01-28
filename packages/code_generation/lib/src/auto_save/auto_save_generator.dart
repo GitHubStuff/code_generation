@@ -70,10 +70,15 @@ class AutoSaveGenerator extends GeneratorForAnnotatedFieldAbstract<AutoSave> {
     String dataType() => tokenItems[3];
     String variableName() => tokenItems[4];
     String getterCode = (getterName() == '*') ? '' : '${dataType()} get _\$${getterName()} => ${variableName()};';
+    String hintGetter = (getterName() == '*') ? '' : '${dataType()} get ${getterName()} => _\$${getterName()};';
     String headerLine = (_addIgnoreLines) ? '// ignore_for_file: lines_longer_than_80_chars' : '';
     _addIgnoreLines = false;
     String result = """
 $headerLine
+/* Cut and Paste to main file
+$hintGetter
+set ${setterName()} => _\$${setterName()}
+*/
     extension ${className()}AutoSave${setterName().capitalize} on ${className()} {
       set _\$${setterName()}(${dataType()} newValue) {
         ${variableName()} = newValue;
