@@ -27,7 +27,7 @@ class HiveJsonGenerator {
     _generated.writeln('  static Future<void> setup() => _\$setup();');
     _generated.writeln('');
     _generated.writeln('  static $className from({required String string}) => _\$fromString(string);');
-    _generated.writeln('  static $className? reload([String? key]) => _\$reload(key);');
+    _generated.writeln('  static $className? reload() => _\$reload();');
     _generated.writeln('');
     _generated.writeln('  void close() => _\$close();');
     _generated.writeln('  void delete() => _\$delete();');
