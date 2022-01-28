@@ -62,7 +62,7 @@ class HiveJsonGenerator {
     _generated.writeln('  return $className.fromJson(map);');
     _generated.writeln('}');
     _generated.writeln('');
-    _generated.writeln('extension ${className}WithHive {');
+    _generated.writeln('extension ${className}WithHive on $className{');
     _generated.writeln('  void _\$save() => (_\$setupComplete) ? _box?.put(_key, jsonEncode(this)) : throw FlutterError("Not setup");');
     _generated.writeln('');
     _generated.writeln('  void _\$close() => (_\$setupComplete) ? _box?.close() : throw FlutterError("Not setup");');
