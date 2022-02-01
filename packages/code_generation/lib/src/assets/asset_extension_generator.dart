@@ -4,6 +4,7 @@ import 'package:source_gen/source_gen.dart';
 import '../../string_extension.dart';
 
 class AssetExtensionGenerator {
+  static bool _addIgnoreLines = true;
   final ClassElement element;
   final ConstantReader annotations;
   final _generated = StringBuffer();
@@ -18,7 +19,8 @@ class AssetExtensionGenerator {
   String get gradientClassAndMapName => annotations.read('gradientClassAndMapName').stringValue;
 
   String generate() {
-    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
+    if (_addIgnoreLines) _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
+    _addIgnoreLines = false;
     _generated.writeln('/* For "enum $name" the assetTitle => [$assetTitle] */');
     _generateAssets();
     return _generated.toString();

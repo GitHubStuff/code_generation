@@ -2,6 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/source_gen.dart';
 
 class HiveCodeGenerator {
+  static bool _addIgnoreLines = true;
   final ClassElement element;
   final ConstantReader annotations;
 
@@ -14,7 +15,8 @@ class HiveCodeGenerator {
   String get enumName => annotations.peek('enumName') == null ? '' : annotations.read('enumName').stringValue;
 
   String generate() {
-    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
+    if (_addIgnoreLines) _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
+    _addIgnoreLines = false;
     _generateHive();
     return _generated.toString();
   }
