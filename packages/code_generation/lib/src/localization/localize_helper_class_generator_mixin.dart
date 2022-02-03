@@ -17,6 +17,7 @@ extension LocalizeHelperClassGeneratorMixin on LocalizeLookupGenerator {
   }
 
   void _generateClass() {
+    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
     _generated.writeln('//! await ${helperClassName}.setup() should be called at App start to persist Locale');
     _generated.writeln('// MARK: Helper class $helperClassName for getting and setting Locale');
     _generated.writeln("// NOTE: calling as => await ${helperClassName}.setup(locale: Locale('en');");

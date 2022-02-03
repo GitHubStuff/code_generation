@@ -25,7 +25,6 @@ class LocalizeLookupGenerator {
   bool get generateHelperClass => annotations.read('generateHelperClass').boolValue;
 
   String generate() {
-    _generated.writeln('// ignore_for_file: lines_longer_than_80_chars');
     _generateHelperClass();
     _generateLocalization();
     return _generated.toString();
