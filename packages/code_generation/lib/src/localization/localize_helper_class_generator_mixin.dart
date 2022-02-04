@@ -35,7 +35,7 @@ extension LocalizeHelperClassGeneratorMixin on LocalizeLookupGenerator {
     _generated.writeln('// MARK: Extension to $helperClassName for ${i69nKey.capitalize} token');
     _generated.writeln('extension $helperClassName${i69nKey.capitalize} on $helperClassName {');
     _generated
-        .writeln('  static String translate${i69nKey.capitalize}(${this.element.name} token, {Locale? locale}) => token.byLocale(locale ??  ${helperClassName}Cubit.locale);');
+        .writeln('  static String translate${i69nKey.capitalize}(${this.element.name} token, {Locale? locale}) => token.byLocale(locale ??  ${helperClassName}.locale);');
     _generated.writeln('}');
   }
 
