@@ -1,12 +1,12 @@
 name: code_generation_annotation
 description: Annotations for the localize_enum code generator package.
-version: 0.0.3+119
+version: 0.0.3+120
 homepage: https://www.raehealth.com
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.16.2 <3.0.0" #Dart SDK 2022-04-02
-  flutter: ">=2.10.4"
+  sdk: ">=2.16.2 <3.0.0" #Dart SDK 2022-04-22
+  flutter: ">=2.10.5"
 
 dependencies:
   meta: ^1.7.0
